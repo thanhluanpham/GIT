@@ -94,11 +94,7 @@ void init() {
 	// Flush buffer to screen
 	ssd1306_UpdateScreen();
 }
-void func3()
-{
-	void (*jumpaddr)(GPIO_TypeDef *GPIOx , uint16_t GPIO_Pin)=&HAL_GPIO_TogglePin;//&HAL_GPIO_TogglePin
-	jumpaddr(GPIOD, GPIO_PIN_12);
-}
+
 /* USER CODE END 0 */
 
 /**
@@ -138,8 +134,6 @@ int main(void)
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
 	init();
-
-	func3();
   /* USER CODE END 2 */
 
   /* Infinite loop */
