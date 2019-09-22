@@ -1,7 +1,7 @@
 [PreviousGenFiles]
-HeaderPath=C:/Users/Luan_Pham/Documents/STMGPIOTEST/RTC_i2c/Inc
+HeaderPath=C:/Users/Luan_Pham/git/GIT/i2ctest_RTC/Inc
 HeaderFiles=stm32f4xx_it.h;stm32f4xx_hal_conf.h;main.h;
-SourcePath=C:/Users/Luan_Pham/Documents/STMGPIOTEST/RTC_i2c/Src
+SourcePath=C:/Users/Luan_Pham/git/GIT/i2ctest_RTC/Src
 SourceFiles=stm32f4xx_it.c;stm32f4xx_hal_msp.c;main.c;
 
 [PreviousLibFiles]
