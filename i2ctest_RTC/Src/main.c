@@ -75,8 +75,6 @@ static uint32_t State_counter;
 uint32_t State_counter2=0;
 static uint32_t State_counter3 =0;
 uint32_t tickstart1 = 0;
-uint32_t buttonpressed =0; lastdebouncetime;
-uint32_t longpressed_detected =0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -150,8 +148,8 @@ int main(void)
 
 		HAL_Delay(100);
 		//HAL_Delay(1000);
-		longpressed_detected = (HAL_GetTick()- lastdebouncetime);
-		if((HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0)==1)&&(!buttonpressed)&&(longpressed_detected>500))
+		State_counter2 = HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0);
+		if(State_counter2==1)
 		{
 			State_counter++;
 
@@ -159,18 +157,15 @@ int main(void)
 			{
 				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15, GPIO_PIN_SET);
 
-				HAL_Delay(100);
-				for(tickstart1=0;tickstart1<50000;tickstart1++)
-				{
 
-					State_counter3++;
+				for(tickstart1=0;tickstart1<500;tickstart1++)
+				{
 					if (HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0)==1)
 										{
-
-
+						State_counter3++;
+						State_counter =0;
 										}
 				}
-				State_counter =0;
 			}
 			else
 			{
@@ -378,7 +373,7 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin : PA0 */
   GPIO_InitStruct.Pin = GPIO_PIN_0;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
@@ -396,8 +391,10 @@ static void MX_GPIO_Init(void)
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-lastdebouncetime = HAL_GetTick();
-buttonpressed =0;
+
+
+
+
 
 }
 
