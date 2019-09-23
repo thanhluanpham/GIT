@@ -155,7 +155,7 @@ int main(void)
 		}
 
 
-		if (State_buttonpressed)
+		if (State_buttonpressed&&!State_buttonpressed2)
 		{
 			if ((HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0)==1))
 			{
